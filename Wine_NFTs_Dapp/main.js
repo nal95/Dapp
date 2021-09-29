@@ -10,9 +10,12 @@ if (Moralis.User.current() == null && window.location.href != homepage) {
 }*/
 
 login = async () => {
-  await Moralis.Web3.authenticate().then(function (user) {
+  await Moralis.Web3.authenticate().then(async function (user) {
     console.log("logged in !!");
-    console.log(Moralis.User.current());
+    user.set("name", document.getElementById("user-username").value);
+    user.set("email", document.getElementById("user-email").value);
+    await user.save();
+    window.location.href = "mint.html";
   });
 };
 

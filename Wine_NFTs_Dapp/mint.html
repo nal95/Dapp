@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.88.1">
+  <title>Mint Wines NFTs </title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+
+  <link href="mint.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <!-- Moralis -->
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+
+
+  <!-- Custom styles for this template -->
+</head>
+
+<body class="bg-light">
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="wines.png" alt="" width="72" height="57">
+        <h2>Let ours mint Wines</h2>
+        <p class="lead">Ce paragraph est à éditer...........</p>
+      </div>
+
+      <hr>
+      <div class="mb-3">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <input disabled="true" id="SN" type="text" class="form-control" placeholder="NFT Serial nummer"
+              aria-label="URL" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <input disabled="true" id="name" type="text" class="form-control" placeholder="NFT Name" aria-label="URL"
+              aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <input disabled="true" id="description" type="text" class="form-control" placeholder="Description"
+              aria-label="URL" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <input type="file" disabled="true" id="file">
+          </div>
+        </div>
+        <div>
+          <button disabled="true" class="btn btn-primary" id="upload" onclick="upload();">Upload and
+            Mint</button>
+          <button id="btn-logout" type="button" class="btn btn-danger pull-right ">Logout</button>
+        </div>
+        <hr>
+        <div class="input-group mb-3" id="resultSpace">
+        </div>
+      </div>
+    </main>
+    <p class="mb-1">&copy; 2017–2021 Company Name</p>
+  </div>
+
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
