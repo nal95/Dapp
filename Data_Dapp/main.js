@@ -1,6 +1,6 @@
 // connect to Moralis server
-Moralis.initialize("ietXr271huKFW8nCKZMXg6pOM47el5PljGVsubaN");
-Moralis.serverURL = "https://qzhpwlroh4gk.moralishost.com:2053/server";
+Moralis.initialize("Ltss6W4U9vOhZchBuGe2dqPxDfC4Nen5SbfWknJu");
+Moralis.serverURL = "https://l9xkm7fabaio.moralishost.com:2053/server";
 
 let homepage = "http://127.0.0.1:5500/index.html";
 
