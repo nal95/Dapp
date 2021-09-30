@@ -39,26 +39,31 @@
       <hr>
       <div class="mb-3">
         <div class="form-group">
+
           <div class="input-group mb-3">
-            <input disabled="true" id="SN" type="text" class="form-control" placeholder="NFT Serial nummer"
-              aria-label="URL" aria-describedby="basic-addon1">
+            <button id="nfts" type="button" class="btn btn-link ">NFTs-List</button>
           </div>
           <div class="input-group mb-3">
-            <input disabled="true" id="name" type="text" class="form-control" placeholder="NFT Name" aria-label="URL"
+            <input id="SN" type="text" class="form-control" placeholder="NFT Serial nummer" aria-label="URL"
               aria-describedby="basic-addon1">
           </div>
           <div class="input-group mb-3">
-            <input disabled="true" id="description" type="text" class="form-control" placeholder="Description"
-              aria-label="URL" aria-describedby="basic-addon1">
+            <input id="name" type="text" class="form-control" placeholder="NFT Name" aria-label="URL"
+              aria-describedby="basic-addon1">
           </div>
           <div class="input-group mb-3">
-            <input type="file" disabled="true" id="file">
+            <!-- <input id="description" type="text" class="form-control" placeholder="Description" aria-label="URL"
+              aria-describedby="basic-addon1"> -->
+            <textarea id="description" type="text" class="form-control" rows="4" aria-label="URL"
+              placeholder="Enter the Wine description hier"></textarea>
+          </div>
+          <div class="input-group mb-3">
+            <input type="file" id="file">
           </div>
         </div>
         <div>
-          <button disabled="true" class="btn btn-primary" id="upload" onclick="upload();">Upload and
-            Mint</button>
-          <button id="btn-logout" type="button" class="btn btn-danger pull-right ">Logout</button>
+          <button class="btn btn-primary  pull-left" id="upload" onclick="upload();"> Mint </button>
+          <button id="btn-logout" type="button" class="btn btn-danger float-end "> Logout</button>
         </div>
         <hr>
         <div class="input-group mb-3" id="resultSpace">
