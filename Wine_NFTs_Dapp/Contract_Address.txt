@@ -1,2 +1,30 @@
-WineNFTs = "0xbFEf1ADC73Ed3Ed9EDa674FB7E0A9503E7Ff5354"
-sender = "0x726b6cDb85461db1e9eF39892420CD05FaA4A01F" (mumbai)
+
+2_WineNFTs_migration.js
+=======================
+
+   Deploying 'WineNFTs'
+   --------------------
+   > transaction hash:    0xd3c60979211cfb3e80635ee2846c962da317cf178e7fdf9963124f8c1745eaa7
+   > Blocks: 2            Seconds: 4
+   > contract address:    0x65225C37E80b95DBD98Fb8db4A7520Cf01284A63
+   > block number:        19589204
+   > block timestamp:     1633011612
+   > account:             0xC451a31d586Fa8c91c382f4a7800ac318D966762  (Lauryn_Alex)
+   > balance:             3.987996159
+   > gas used:            2961014 (0x2d2e76)
+   > gas price:           4 gwei
+   > value sent:          0 ETH
+   > total cost:          0.011844056 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 3 (block: 19589207)
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:         0.011844056 ETH
+
+
+Summary
+=======
+> Total deployments:   1
+> Final cost:          0.011844056 ETH
