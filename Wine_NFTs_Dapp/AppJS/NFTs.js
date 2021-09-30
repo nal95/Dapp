@@ -11,7 +11,6 @@ async function init() {
 }
 
 init();
-//<img class="Image--image" src="https://lh3.googleusercontent.com/YUZyEEBzMggZQ5dTTLi9IEj4krkdlK3ZO4Ew7pi9fT9jgn4JfHn9rYYgmf4JRpPOe9nWDxzE-1Ef7pxOv94cwMXm4aQKpJkZc0Jv_A=w280" style="object-fit: contain; width: auto; height: auto; border-radius: 5px; max-width: 100%; max-height: 100%;"></img>
 getNFTs = async () => {
   console.log("cool connected to nft fiel");
   let nfts = await Moralis.Web3API.account.getNFTs({ chain: "mumbai" });
@@ -47,6 +46,3 @@ getNFTs = async () => {
 };*/
 
 getNFTs();
-/*
-
-*/
