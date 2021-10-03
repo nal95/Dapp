@@ -2,7 +2,7 @@
 Moralis.initialize("Ltss6W4U9vOhZchBuGe2dqPxDfC4Nen5SbfWknJu");
 Moralis.serverURL = "https://l9xkm7fabaio.moralishost.com:2053/server";
 
-let homepage = "http://127.0.0.1:5500/index.html";
+let homepage = "http://127.0.0.1:5500/Data_Dapp/index.html";
 
 if (Moralis.User.current() == null && window.location.href != homepage) {
   document.querySelector("body").style.display = "none";
@@ -32,7 +32,7 @@ getTransactions = async () => {
   console.log("get transactions clicked");
   const options = {
     chain: "mumbai",
-    address: "0x726b6cDb85461db1e9eF39892420CD05FaA4A01F",
+    address: "0xC451a31d586Fa8c91c382f4a7800ac318D966762",
   };
   const transactions = await Moralis.Web3API.account.getTransactions(options);
   console.log(transactions);

@@ -484,7 +484,7 @@ const contractAbi = [
         type: "string",
       },
     ],
-    name: "mintWinesToken",
+    name: "mintWineToken",
     outputs: [
       {
         internalType: "uint256",

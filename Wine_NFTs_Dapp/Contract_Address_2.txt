@@ -1,0 +1,61 @@
+Starting migrations...
+======================
+> Network name:    'matic'
+> Network id:      80001
+> Block gas limit: 20000000 (0x1312d00)
+
+
+2_WineNFTs_migration.js
+=======================
+
+   Deploying 'WineNFTs'
+   --------------------
+   > transaction hash:    0xd7656a247e573f1a8cbd3bb1a1d53e90c4abdfa09200ccbe3d3fe735f3cae570
+   > Blocks: 2            Seconds: 4
+   > contract address:    0xfc8Eef2CD45f14EcE9e56cd9Ef61B5738a309A85
+   > block number:        19723357
+   > block timestamp:     1633289074
+   > account:             0xC451a31d586Fa8c91c382f4a7800ac318D966762
+   > balance:             0.238993185584
+   > gas used:            3017247 (0x2e0a1f)
+   > gas price:           3 gwei
+   > value sent:          0 ETH
+   > total cost:          0.009051741 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 2 (block: 19723359)
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:         0.009051741 ETH
+
+
+3_Lager_migration.js
+====================
+
+   Deploying 'Lager'
+   -----------------
+   > transaction hash:    0x79ce564abb74a976454ba8a6f01a255e4ff12478ba39120944bc7db1ce2ea930
+   > Blocks: 3            Seconds: 5
+   > contract address:    0x9E5C63092C9AB19E4d2108fDdd7386fa072d8049
+   > block number:        19723363
+   > block timestamp:     1633289086
+   > account:             0xC451a31d586Fa8c91c382f4a7800ac318D966762
+   > balance:             0.237752412584
+   > gas used:            413591 (0x64f97)
+   > gas price:           3 gwei
+   > value sent:          0 ETH
+   > total cost:          0.001240773 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 2 (block: 19723365)
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:         0.001240773 ETH
+
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.010292514 ETH

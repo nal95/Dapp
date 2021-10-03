@@ -1,6 +1,6 @@
 // connect to Moralis server
-Moralis.initialize("U8pWrvTB4I6vpnKF24fyZxrD4YQue5wHnuaHtVPR");
-Moralis.serverURL = "https://oyoj4lpcodao.moralishost.com:2053/server";
+Moralis.initialize("LxM62hGGsVUGycHbQ4xqgkZwvljKOlhxYDD40o4i");
+Moralis.serverURL = "https://gatgq3cu6b0i.moralishost.com:2053/server";
 let web3;
 
 async function init() {
@@ -9,7 +9,7 @@ async function init() {
 
 init();
 
-const nft_contract_address = "0x65225C37E80b95DBD98Fb8db4A7520Cf01284A63"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
+const nft_contract_address = "0xfc8Eef2CD45f14EcE9e56cd9Ef61B5738a309A85"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
 const options = { chain: "mumbai", address: nft_contract_address };
 login = async () => {
   await Moralis.Web3.authenticate().then(async function (user) {
@@ -42,6 +42,8 @@ async function upload() {
   const metadata = {
     name: document.getElementById("name").value,
     description: document.getElementById("description").value,
+    //test
+    serialnummer: SN,
     image: imageURI,
   };
   const metadataFile = new Moralis.File("metadata.json", {
@@ -51,7 +53,7 @@ async function upload() {
   const metadataURI = metadataFile.ipfs();
 
   contract.methods
-    .mintWinesToken(SN, metadataURI)
+    .mintWineToken(SN, metadataURI)
     .send({ from: accounts[0], value: 0 });
 }
 
