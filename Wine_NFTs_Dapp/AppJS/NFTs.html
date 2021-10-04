@@ -14,10 +14,6 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-
-    <link href="mint.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-
     <!-- Moralis -->
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
@@ -26,6 +22,25 @@
 
     <!-- Custom styles for this template -->
 </head>
+
+<style>
+    div#tableOfNFTs {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 85%;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+    }
+
+    div#card {
+        width: 24%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #eee;
+    }
+</style>
 
 <body class="bg-light">
 
@@ -41,7 +56,7 @@
             <div class="mb-3">
                 <div class="form-group">
 
-                    <div id="tableOfNFTs" class="table-responsive d-flex flex-wrap">
+                    <div id="tableOfNFTs">
                     </div>
 
                 </div>
