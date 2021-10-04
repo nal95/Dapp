@@ -57,9 +57,7 @@ contract Lager{
         require( exist(_str) == false,"serialNummer allredy exist");
         check.push(Check(_str,block.timestamp));
         emit checkIOEbvent (block.timestamp, _str);
-        return (block.timestamp);
-        
-       
+        return (block.timestamp); 
     }
     
     function checkOut(string memory _str) public onlyAdmin returns (uint256, bool){

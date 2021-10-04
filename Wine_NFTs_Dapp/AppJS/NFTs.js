@@ -1,9 +1,9 @@
 // connect to Moralis server
-Moralis.initialize("LxM62hGGsVUGycHbQ4xqgkZwvljKOlhxYDD40o4i");
-Moralis.serverURL = "https://gatgq3cu6b0i.moralishost.com:2053/server";
+Moralis.initialize("o7fbfCUvlzln18HbwVW3qLSuiKESUKVKNg3nQW1K");
+Moralis.serverURL = "https://ykbeoaiyrra6.moralishost.com:2053/server";
 let web3;
 
-const nft_user_address = "0xC451a31d586Fa8c91c382f4a7800ac318D966762"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
+const nft_user_address = "0x6666Ce97fe2D28746559220Ecec9D784054c360A"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
 const options = { chain: "mumbai", address: nft_user_address };
 
 async function init() {

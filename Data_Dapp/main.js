@@ -1,6 +1,6 @@
 // connect to Moralis server
-Moralis.initialize("Ltss6W4U9vOhZchBuGe2dqPxDfC4Nen5SbfWknJu");
-Moralis.serverURL = "https://l9xkm7fabaio.moralishost.com:2053/server";
+Moralis.initialize("o7fbfCUvlzln18HbwVW3qLSuiKESUKVKNg3nQW1K");
+Moralis.serverURL = "https://ykbeoaiyrra6.moralishost.com:2053/server";
 
 let homepage = "http://127.0.0.1:5500/Data_Dapp/index.html";
 
@@ -32,7 +32,7 @@ getTransactions = async () => {
   console.log("get transactions clicked");
   const options = {
     chain: "mumbai",
-    address: "0xC451a31d586Fa8c91c382f4a7800ac318D966762",
+    address: "0x6666Ce97fe2D28746559220Ecec9D784054c360A",
   };
   const transactions = await Moralis.Web3API.account.getTransactions(options);
   console.log(transactions);
