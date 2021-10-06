@@ -1,4 +1,4 @@
-const contractAbi = [
+const LagerAbi = [
   {
     anonymous: false,
     inputs: [

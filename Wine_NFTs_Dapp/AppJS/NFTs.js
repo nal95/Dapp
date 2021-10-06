@@ -26,7 +26,7 @@ getNFTs = async () => {
             <img scr= "${metadata.image}" class="card-img-top" width="200" height="250" >
             <div class="card-body">
                 <h5 class="card-title" style="font-family:verdana">${metadata.name}</h5>
-                <h1 class="card-title" style="font-family:verdana"> SN: ${metadata.serialnummer} </h1>
+                <h5 class="card-title" style="font-family:verdana"> SN: ${metadata.serialnummer} </h5>
             </div>
         </div>
       `;

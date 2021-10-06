@@ -2,10 +2,11 @@
 
 pragma solidity >=0.8.0;
 
-contract Lager{
+contract Lager {
     
 
     address admin = msg.sender;
+
     
     struct Check {
         string serialNummer;
@@ -22,7 +23,8 @@ contract Lager{
     
     // event qui nous permettra d'obtenir nos Hash et le temps 
     event Store (uint date, bytes32 Hash);
-    event checkIOEbvent(uint date, string);
+    event checkInEvent(uint date, string);
+    event checkOutEvent(uint date, string);
     //la fonction qui sera appeler pour sauvegarder les Hash
     function storageData ( 
         string memory Hash
@@ -56,7 +58,7 @@ contract Lager{
     function checkIn(string memory _str) public onlyAdmin returns (uint256){
         require( exist(_str) == false,"serialNummer allredy exist");
         check.push(Check(_str,block.timestamp));
-        emit checkIOEbvent (block.timestamp, _str);
+        emit checkInEvent (block.timestamp, _str);
         return (block.timestamp); 
     }
     
@@ -73,7 +75,7 @@ contract Lager{
                 helper = true;
             }
         }
-        emit checkIOEbvent (during, _str);
+        emit checkOutEvent (during, _str);
         return (during , helper);
     }
           

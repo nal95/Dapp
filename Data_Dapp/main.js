@@ -99,7 +99,9 @@ getBalances = async () => {
   
   `);
 };
-
+storageWine = async () => {
+  window.location.href = "storage.html";
+};
 if (document.querySelector("#btn-login") != null) {
   document.querySelector("#btn-login").onclick = login;
 }
@@ -109,6 +111,9 @@ if (document.querySelector("#btn-logout") != null) {
 
 if (document.querySelector("#get-transactions-link")) {
   document.querySelector("#get-transactions-link").onclick = getTransactions;
+}
+if (document.querySelector("#get-nfts-link")) {
+  document.querySelector("#get-nfts-link").onclick = storageWine;
 }
 
 if (document.querySelector("#get-balances-link")) {

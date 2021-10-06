@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>The Storage Component</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+
+</head>
+
+
+<body>
+    <div class="container">
+        <h2>Wine Serial Nummer to Store in Lager</h2>
+        <div class="form-group mb-3">
+            <input id="wine-serial-nummer" type="text" class="form-control" placeholder="Wine Uid" aria-label="URL"
+                aria-describedby="basic-addon1" required="true">
+        </div>
+        <div>
+            <button id="storage" type="submit" class="btn btn-primary" onclick="saving();"> Store </button>
+        </div>
+        <div id="tableOfNFTs">
+            <hr>
+        </div>
+
+        <div id="content">
+            
+        </div>
+
+
+    </div>
+
+    <!-- Mumbai WineNfts smart contract abi -->
+    <script type="text/javascript" src="abi1.js"></script>
+    <script type="text/javascript" src="abi2.js"></script>
+    <script src="storage.js"></script>
+</body>
+</body>
+
+</html>
