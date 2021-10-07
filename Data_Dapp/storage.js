@@ -32,7 +32,6 @@ async function init() {
   console.log(a);
 }
 
-
 /*async function saving() {
   let SN = document.getElementById("wine-serial-nummer").value;
   web3 = await Moralis.Web3.enable();
@@ -52,6 +51,5 @@ async function init() {
 
   console.log(a);
 }*/
-
 
 init();
