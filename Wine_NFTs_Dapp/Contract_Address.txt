@@ -1,0 +1,29 @@
+   Replacing 'Lager'
+   -----------------
+   > transaction hash:    0x767ff0632b573e45883efa01177b0416424b9e6072e7c48eeca17d087d89fea0
+   > Blocks: 1            Seconds: 4
+   > contract address:    0x249BdafAf4d458C0cA564666e274528e028166d6
+   > block number:        19857763
+   > block timestamp:     1633567443
+   > account:             0x5d7b02ABF6F50266dC2f4816908D58e088DE4277
+   > balance:             2.279165446584
+   > gas used:            1888564 (0x1cd134)
+   > gas price:           3 gwei
+   > value sent:          0 ETH
+   > total cost:          0.005665692 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 2 (block: 19857765)
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:         0.005665692 ETH
+
+
+Summary
+=======
+> Total deployments:   1
+> Final cost:          0.005665692 ETH
+
+WinesNFTS_Contract:"0x5480f725EC86A1A4a0416bf79A9fFeDa0701c596"
+Sensor_Contrct:"0x3a41A45E9769a1c08E7E2509823115d4F548C551" 

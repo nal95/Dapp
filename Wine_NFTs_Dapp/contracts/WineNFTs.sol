@@ -1,66 +1,36 @@
 
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity >=0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract WineNFTs is ERC721, Ownable {
     
+
+    mapping (bytes32 => uint256)  id ; // to store Uid from sting / bytes32 to uint256
+    mapping(uint256 => string) _tokenURIs; // to store nfts uri
     
-    mapping (bytes32 => uint256)  id ;
-    mapping(uint256 => string) _tokenURIs;
-    
-    uint256 counter = 0;
+    uint256 counter = 0;// for itterate nfts minting
     
     
-   struct RenderToken { uint256 id; string uri;}
-   struct Auth{uint256 ids; string  _SN;}
+   struct NFTs{
+       string  Udi;
+       string Uri;}
   
-   //RenderToken[] public RT;
-   Auth[] public auths;
-   
-   address Admin_Address = msg.sender;
+   //arrays of nfts present with this Smart contract ;
+   NFTs[]  nfts;
 
 
     constructor() ERC721("Wine", "W") {}
     
     //User
-    function setID(string memory _x) internal pure returns(bytes32 ){
+    function setUid(string memory _x) internal pure returns(bytes32 ){
         return keccak256(abi.encodePacked(_x));
     }
     
     function _setTokenURI(uint256 tokenId, string memory _tokenURI) internal {
         _tokenURIs[tokenId] = _tokenURI;
-    }
-    
-    
-    function tokenURI(uint256 tokenId)
-    public
-    view
-    virtual
-    override
-    returns (string memory)
-    {
-        require(_exists(tokenId));
-        string memory _tokenURI = _tokenURIs[tokenId];
-        return _tokenURI;
-    }
-    
-    
-  function getAllTokens() public view onlyOwner returns(RenderToken[] memory) {
-        //require(msg.sender == Admin_Address, "Ownable: caller is not the owner");
-        uint256 lastestId = counter;
-        uint256 Counter = 0;
-        RenderToken[] memory res = new RenderToken[](lastestId);
-        for (uint256 i = 0; i <= lastestId; i++) {
-          if (_exists(Counter)) {
-            string memory uri = tokenURI(Counter);
-            res[Counter] = RenderToken(Counter, uri);
-          }
-          Counter++;
-        }
-        return res;
     }
   
   function hashCompareWithLengthCheck(string memory a, string memory b) public pure returns (bool) {
@@ -71,11 +41,11 @@ contract WineNFTs is ERC721, Ownable {
         }
    }
   
-  function exist(string memory _str) internal view returns(bool ){
+  function exist(string memory _Udi) internal view returns(bool ){
       bool setter  = false;
-      for(uint256 i = 0; i< auths.length; i++){
-          string memory _SNN = auths[i]._SN;
-          if(hashCompareWithLengthCheck(_str,_SNN) ){
+      for(uint256 i = 0; i< nfts.length; i++){
+          string memory _str = nfts[i].Udi;
+          if(hashCompareWithLengthCheck(_str,_Udi) ){
               setter = true;
           }
       }
@@ -83,22 +53,20 @@ contract WineNFTs is ERC721, Ownable {
       return setter;
     }
 
-  function mintWineToken(string memory _SN, string memory uri) public onlyOwner returns (uint256) {
+  function mintWineToken(string memory _Udi, string memory _Uri) public onlyOwner returns (uint256) {
         
-        require(exist(_SN) == false, "token alredy minted");
-        bytes32 newSN = setID(_SN);
+        require(exist(_Udi) == false, "token alredy minted");
+        bytes32 newSN = setUid(_Udi);
         id[newSN] = counter;
         _mint(msg.sender, id[newSN]);
-        _setTokenURI(id[newSN], uri);
-        auths.push(Auth(counter, _SN));
+        _setTokenURI(id[newSN], _Uri);
+        nfts.push(NFTs(_Udi, _Uri));
         counter++;
         return id[newSN] ;
     }
     
-  function getAuth() public view onlyOwner returns(Auth[] memory){
-       // uint256 size = auths.length;
-        //require(msg.sender == Admin_Address, "Ownable: caller is not the owner");
-        return (auths);
+  function getNFTs() external view  returns(NFTs[] memory){
+        return (nfts);
     }
     
 }

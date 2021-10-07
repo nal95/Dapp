@@ -119,31 +119,6 @@ const contractAbi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "auths",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "ids",
-        type: "uint256",
-      },
-      {
-        internalType: "string",
-        name: "_SN",
-        type: "string",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-    constant: true,
-  },
-  {
-    inputs: [
-      {
         internalType: "address",
         name: "owner",
         type: "address",
@@ -159,7 +134,6 @@ const contractAbi = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [
@@ -179,7 +153,6 @@ const contractAbi = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [
@@ -204,7 +177,6 @@ const contractAbi = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [],
@@ -218,7 +190,6 @@ const contractAbi = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [],
@@ -232,7 +203,6 @@ const contractAbi = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [
@@ -252,7 +222,6 @@ const contractAbi = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [],
@@ -348,7 +317,6 @@ const contractAbi = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [],
@@ -362,7 +330,25 @@ const contractAbi = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "tokenURI",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
   },
   {
     inputs: [
@@ -403,52 +389,6 @@ const contractAbi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "tokenURI",
-    outputs: [
-      {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-    constant: true,
-  },
-  {
-    inputs: [],
-    name: "getAllTokens",
-    outputs: [
-      {
-        components: [
-          {
-            internalType: "uint256",
-            name: "id",
-            type: "uint256",
-          },
-          {
-            internalType: "string",
-            name: "uri",
-            type: "string",
-          },
-        ],
-        internalType: "struct WineNFTs.RenderToken[]",
-        name: "",
-        type: "tuple[]",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-    constant: true,
-  },
-  {
-    inputs: [
-      {
         internalType: "string",
         name: "a",
         type: "string",
@@ -469,18 +409,17 @@ const contractAbi = [
     ],
     stateMutability: "pure",
     type: "function",
-    constant: true,
   },
   {
     inputs: [
       {
         internalType: "string",
-        name: "_SN",
+        name: "_Udi",
         type: "string",
       },
       {
         internalType: "string",
-        name: "uri",
+        name: "_Uri",
         type: "string",
       },
     ],
@@ -497,28 +436,27 @@ const contractAbi = [
   },
   {
     inputs: [],
-    name: "getAuth",
+    name: "getNFTs",
     outputs: [
       {
         components: [
           {
-            internalType: "uint256",
-            name: "ids",
-            type: "uint256",
+            internalType: "string",
+            name: "Udi",
+            type: "string",
           },
           {
             internalType: "string",
-            name: "_SN",
+            name: "Uri",
             type: "string",
           },
         ],
-        internalType: "struct WineNFTs.Auth[]",
+        internalType: "struct WineNFTs.NFTs[]",
         name: "",
         type: "tuple[]",
       },
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
 ];

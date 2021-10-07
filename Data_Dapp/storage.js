@@ -1,66 +1,57 @@
-Moralis.initialize("o7fbfCUvlzln18HbwVW3qLSuiKESUKVKNg3nQW1K");
-Moralis.serverURL = "https://ykbeoaiyrra6.moralishost.com:2053/server";
+// connect to Moralis server
+Moralis.initialize("su0K7UAKXwapd9KFbGAUFrVE6TpcwOuWnnEumP8y");
+Moralis.serverURL = "https://putptmsau7mw.moralishost.com:2053/server";
+
 let web3;
-let _SN = [];
-let link = [];
 
-const nft_contract_lager = "0x864fE4acEE7Da3f76C84d8EFf42785F76436Fe46"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
-const optionsLager = { chain: "mumbai", address: nft_contract_lager };
-const nft_contract_wineNFTs = "0xBBc9E02f74ce08ef8Fc07207F47b1489fE09479b"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
-const optionswineNTFs = { chain: "mumbai", address: nft_contract_wineNFTs };
+const contract_lager = "0x249BdafAf4d458C0cA564666e274528e028166d6"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
+const optionsLager = { chain: "mumbai", address: contract_lager };
 
-async function saving() {
+const contract_sensor = "0x3a41A45E9769a1c08E7E2509823115d4F548C551"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
+const optionsSager = { chain: "mumbai", address: contract_sensor };
+
+const contract_wineNFTs = "0x5480f725EC86A1A4a0416bf79A9fFeDa0701c596"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
+const optionswineNTFs = { chain: "mumbai", address: contract_wineNFTs };
+
+async function init() {
+  web3 = await Moralis.Web3.enable();
+  const accounts = await web3.eth.getAccounts();
+  const contractLager = new web3.eth.Contract(LagerAbi, contract_lager);
+  const contractwineNFTs = new web3.eth.Contract(
+    wineNFTsABI,
+    contract_wineNFTs
+  );
+  const a = await contractwineNFTs.methods
+    .getNFTs()
+    .call({ from: accounts[0] });
+
+  console.log(contractLager);
+  console.log(contractwineNFTs);
+  console.log(accounts[0]);
+
+  console.log(a);
+}
+
+
+/*async function saving() {
   let SN = document.getElementById("wine-serial-nummer").value;
   web3 = await Moralis.Web3.enable();
   const accounts = await web3.eth.getAccounts();
-  const contractLager = new web3.eth.Contract(LagerAbi, nft_contract_lager);
+  const contractLager = new web3.eth.Contract(LagerAbi, contract_lager);
   const contractwineNFTs = new web3.eth.Contract(
     wineNFTsABI,
-    nft_contract_wineNFTs
+    contract_wineNFTs
   );
   const a = await contractwineNFTs.methods
-    .getAuth()
+    .getNFTs()
     .call({ from: accounts[0] });
 
-  const b = await contractwineNFTs.methods
-    .getAllTokens()
-    .call({ from: accounts[0] });
-  for (i = 0; i < a.length; i++) {
-    //_SN.push([a[i][1], b[i][1]]);
-    console.log(a[i][1], b[i][1]);
-  }
-  //console.log(a, b);
-  /* for (i = 0; i < a.length; i++) {
-    //_SN.push([a[i][1], b[i][1]]);
-    console.log(_SN);
-  }
-  if (SN != "") {
-    const checkIn = await contractLager.methods
-      .checkIn(SN)
-      .send({ from: accounts[0], value: 0 });
-    if (checkIn) {
-      link.push(SN);
-    }
-    console.log(link);
-  } else {
-    console.log("please insert a Uid!!");
-  }
+  console.log(contractLager);
+  console.log(contractwineNFTs);
+  console.log(accounts[0]);
 
-  for (i = 0; i < a.length; i++) {
-    if (_SN[i][0] == link[i]) {
-      fetch(_SN[i][1])
-        .then((response) => response.json())
-        .then((data) => {
-          let currentDiv = document.querySelector("#content");
-          content = `
-              <div>
-                <p>${data.name}</p>
-                <p>${data.serialnummer}</p>
-                <p>${data.uri}</p>
-              </div>
-              `;
-          currentDiv.innerHTML += content;
-        });
-    }
-  }*/
-}
+  console.log(a);
+}*/
+
+
+init();

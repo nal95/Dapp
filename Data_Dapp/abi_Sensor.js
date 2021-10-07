@@ -1,12 +1,12 @@
-const LagerAbi = [
+const SensorAbi = [
   {
     anonymous: false,
     inputs: [
       {
         indexed: false,
-        internalType: "uint256",
+        internalType: "string",
         name: "date",
-        type: "uint256",
+        type: "string",
       },
       {
         indexed: false,
@@ -15,26 +15,7 @@ const LagerAbi = [
         type: "bytes32",
       },
     ],
-    name: "Store",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "date",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
-    ],
-    name: "checkIOEbvent",
+    name: "storageEvent",
     type: "event",
   },
   {
@@ -45,29 +26,23 @@ const LagerAbi = [
         type: "uint256",
       },
     ],
-    name: "check",
+    name: "existance",
     outputs: [
       {
-        internalType: "string",
-        name: "serialNummer",
-        type: "string",
-      },
-      {
-        internalType: "uint256",
-        name: "date",
-        type: "uint256",
+        internalType: "bool",
+        name: "",
+        type: "bool",
       },
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [
       {
-        internalType: "address",
+        internalType: "string",
         name: "",
-        type: "address",
+        type: "string",
       },
     ],
     name: "filehash",
@@ -80,17 +55,26 @@ const LagerAbi = [
     ],
     stateMutability: "view",
     type: "function",
-    constant: true,
   },
   {
     inputs: [
       {
         internalType: "string",
-        name: "Hash",
+        name: "_date",
         type: "string",
       },
+      {
+        internalType: "string",
+        name: "_hash",
+        type: "string",
+      },
+      {
+        internalType: "uint256",
+        name: "_sendorId",
+        type: "uint256",
+      },
     ],
-    name: "storageData",
+    name: "setStorageData",
     outputs: [
       {
         internalType: "bytes32",
@@ -105,36 +89,36 @@ const LagerAbi = [
     inputs: [
       {
         internalType: "string",
-        name: "_str",
+        name: "_date",
         type: "string",
       },
     ],
-    name: "checkIn",
+    name: "getStorageData",
     outputs: [
       {
-        internalType: "uint256",
+        internalType: "bytes32",
         name: "",
-        type: "uint256",
+        type: "bytes32",
       },
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
       {
+        internalType: "uint256",
+        name: "sensorId",
+        type: "uint256",
+      },
+      {
         internalType: "string",
-        name: "_str",
+        name: "name",
         type: "string",
       },
     ],
-    name: "checkOut",
+    name: "setSensor",
     outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
       {
         internalType: "bool",
         name: "",

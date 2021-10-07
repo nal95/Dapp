@@ -2,85 +2,105 @@
 
 pragma solidity >=0.8.0;
 
-contract Lager {
-    
+import "./WineNFTs.sol";
+import "./Sensor.sol";
 
+contract Lager{
+    
     address admin = msg.sender;
-
+    address adminNFTS;
+    address adminSensor;
     
-    struct Check {
-        string serialNummer;
-        uint256 date;
+    struct Bottle { //bootle
+        uint256 time;
+        uint256 lagerId;
+        string Udi;
     }
+    Bottle[] public bottles;
     
-    Check[] public check;
-
-
-    
-    //definir les variables dont on a besoin:
-    mapping (address => bytes32) public filehash;
-
-    
-    // event qui nous permettra d'obtenir nos Hash et le temps 
-    event Store (uint date, bytes32 Hash);
-    event checkInEvent(uint date, string);
-    event checkOutEvent(uint date, string);
-    //la fonction qui sera appeler pour sauvegarder les Hash
-    function storageData ( 
-        string memory Hash
-        )external onlyAdmin returns (bytes32 ){
-        filehash[admin] = keccak256(abi.encodePacked(Hash));
-        emit Store(block.timestamp, filehash[admin]);
-        return filehash[admin];
+    struct LagerInfos { 
+        uint256 lagerId;
+        string name;
     }
+    LagerInfos[] public lagerId;
+    mapping(uint256 => bool) existance;
     
-    function hashCompareWithLengthCheck(string memory a, string memory b) internal pure returns (bool) {
-        if(bytes(a).length != bytes(b).length) {
-            return false;
-        } else {
-            return keccak256(abi.encodePacked(a)) == keccak256(abi.encodePacked(b));
-        }
+    Sensor public sensor;
+    
+    
+   constructor (address addNFT, address _sensor){
+        adminNFTS = addNFT;
+        adminSensor = _sensor;
+        
     }
-    
-    function exist(string memory _str) internal view returns(bool ){
+
+    event checkInEvent(uint time, uint256 _lagerId, string _Udi);
+    event checkOutEvent(uint time, uint256 _lagerId, string _Udi);
+ 
+    function alreadycheckIn(string memory _Udi) internal view returns(bool ){
       bool setter  = false;
-      for(uint256 i = 0; i< check.length; i++){
-          string memory _SNN = check[i].serialNummer;
-          if(hashCompareWithLengthCheck(_str,_SNN) ){
-              setter = true;
+          for(uint256 i = 0; i< bottles.length; i++){
+              string memory _sn = bottles[i].Udi;
+              if(WineNFTs(adminNFTS).hashCompareWithLengthCheck(_Udi,_sn) ){
+                  setter = true;
+              }
           }
-      }
-      
-      return setter;
-    }
-  
+        return setter;
+    } // kann mit mapping besser gemacht werden 
     
-    function checkIn(string memory _str) public onlyAdmin returns (uint256){
-        require( exist(_str) == false,"serialNummer allredy exist");
-        check.push(Check(_str,block.timestamp));
-        emit checkInEvent (block.timestamp, _str);
-        return (block.timestamp); 
+    function setLager(uint256 _lagerId, string memory name)public onlyAdmin returns(bool){
+        require(existance[_lagerId] == false,"lager already exist");
+        lagerId.push(LagerInfos(_lagerId,name));
+        existance[_lagerId] = true;
+        return existance[_lagerId];
     }
     
-    function checkOut(string memory _str) public onlyAdmin returns (uint256, bool){
-        uint256 during = 0 ;
+    function checkInBottle(uint256 _lagerId, string memory _Udi) public returns (Bottle[] memory r ){
+        require( alreadycheckIn(_Udi) == false,"bottle with this Udi already exist in this Lager");
+        require( existance[_lagerId] == true,"Lager Id is not definiert if it is a new Lager please call setLager function ");
+        WineNFTs.NFTs[] memory nfts = WineNFTs(adminNFTS).getNFTs(); 
+        for(uint256 i=0; i < nfts.length; i++){
+          if(WineNFTs(adminNFTS).hashCompareWithLengthCheck(nfts[i].Udi,_Udi) ){
+            bottles.push(Bottle(block.timestamp, _lagerId, _Udi));
+            r = bottles;
+          }  
+        }
+
+        emit checkInEvent(block.timestamp, _lagerId, _Udi);
+        return r;
+    }
+    
+    function checkOutBottle(uint256 _lagerId, string memory _Udi) public returns (uint256, bool){
+        require( alreadycheckIn(_Udi) == true,"bottle with this Udi don't exist in this lager");
         bool helper = false;
-        for(uint256 i=0; i<check.length; i++){
-            if(hashCompareWithLengthCheck( check[i].serialNummer, _str )){
-                during = block.timestamp - check[i].date;
-                for (uint256 j=i; j<check.length-1; j++){
-                    check[j]=check[j+1];
+        for(uint256 i=0; i<bottles.length; i++){
+            if(WineNFTs(adminNFTS).hashCompareWithLengthCheck( bottles[i].Udi, _Udi) && bottles[i].lagerId == _lagerId){
+    
+                for (uint256 j=i; j<bottles.length-1; j++){
+                    bottles[j]=bottles[j+1];
                 }
-                check.pop();
+                bottles.pop();
                 helper = true;
             }
         }
-        emit checkOutEvent (during, _str);
-        return (during , helper);
+        emit checkOutEvent(block.timestamp, _lagerId, _Udi);
+        return (block.timestamp, helper);
     }
-          
+    
+    function save_sensor_data(string memory _date, string memory _hash, uint256 _sendorId)external returns(bytes32 r ){
+       r = Sensor(adminSensor).setStorageData(_date, _hash, _sendorId); 
+       //r = sensor.setStorageData(_date, _hash, _sendorId); 
+       return r;
+    }
+    
+    function get_sendor_data(string memory _date) external view returns(bytes32 r ){
+       r = Sensor(adminSensor).getStorageData(_date);
+       //r = sensor.getStorageData(_date);
+       return r;
+    }
+    
     modifier onlyAdmin {
       require(msg.sender == admin, "you are not the manager of this action");
       _;
-   }
+    }
 }
