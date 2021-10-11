@@ -21,6 +21,97 @@ async function init() {
     wineNFTsABI,
     contract_wineNFTs
   );
+  const a = await contractLager.methods
+    .bottles[0];
+
+  console.log(contractLager);
+  console.log(contractwineNFTs);
+  console.log(accounts[0]);
+
+  console.log(a);
+}
+
+
+async function checkin() {
+  let lagerId = document.getElementById("lagerId-input").value;
+  let Udi = document.getElementById("Udi-input").value;
+  if(lagerId!="" && Udi!=""){
+    web3 = await Moralis.Web3.enable();
+    const accounts = await web3.eth.getAccounts();
+    const contractLager = new web3.eth.Contract(LagerAbi, contract_lager);
+    const a = await contractLager.methods
+      .checkInBottle(lagerId, Udi)
+      .send({ from: accounts[0], value: 0 });
+    console.log(a);
+  }else{
+    alert("have the bottle and the lager already been registered?");
+  }
+}
+async function checkout() {
+  let lagerId = document.getElementById("lagerId-input").value;
+  let Udi = document.getElementById("Udi-input").value;
+  if(lagerId!="" && Udi!=""){
+    web3 = await Moralis.Web3.enable();
+    const accounts = await web3.eth.getAccounts();
+    const contractLager = new web3.eth.Contract(LagerAbi, contract_lager);
+    const a = await contractLager.methods
+      .checkOutBottle(lagerId, Udi)
+      .send({ from: accounts[0], value: 0 });
+    console.log(a);
+  }else{
+    alert("have the bottle and the lager already been registered?");
+  }
+
+}
+
+/*printBottleinLager = async () => {
+  web3 = await Moralis.Web3.enable();
+  const accounts = await web3.eth.getAccounts();
+  const contract = new web3.eth.Contract(LagerAbi, contract_lager);
+  const get = await contract.methods.getNFTs().call({ from: accounts[0] });
+
+  if (get.length > 0) {
+    let table = `
+    <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Name</th>
+            <th scope="col">Udi</th>
+        </tr>
+    </thead>
+    <tbody id="theTransactions">
+    </tbody>
+    </table>
+    `;
+    document.querySelector("#tableOfNFTs").innerHTML = table;
+    await get.forEach((n) => {
+      //console.log(JSON.parse(n.metadata));
+      let metadata = n.Uri;
+      fetch(metadata)
+        .then((response) => response.json())
+        .then((data) => {
+          let content = `
+        <tr>
+            <td class="card-title" style="font-family:verdana">${data.date}</td>
+            <td class="card-title" style="font-family:verdana">${data.name}</td>
+            <td class="card-title" style="font-family:verdana">${data.serialnummer} </td>
+        </tr>
+        `;
+          theTransactions.innerHTML += content;
+        });
+    });
+  }
+};*/
+
+/*async function init() {
+  web3 = await Moralis.Web3.enable();
+  const accounts = await web3.eth.getAccounts();
+  const contractLager = new web3.eth.Contract(LagerAbi, contract_lager);
+  const contractwineNFTs = new web3.eth.Contract(
+    wineNFTsABI,
+    contract_wineNFTs
+  );
   const a = await contractwineNFTs.methods
     .getNFTs()
     .call({ from: accounts[0] });
@@ -31,6 +122,29 @@ async function init() {
 
   console.log(a);
 }
+async function init() {
+  web3 = await Moralis.Web3.enable();
+  const accounts = await web3.eth.getAccounts();
+  const contractLager = new web3.eth.Contract(LagerAbi, contract_lager);
+  const contractwineNFTs = new web3.eth.Contract(
+    wineNFTsABI,
+    contract_wineNFTs
+  );
+  const a = await contractwineNFTs.methods
+    .getNFTs()
+    .call({ from: accounts[0] });
+
+  console.log(contractLager);
+  console.log(contractwineNFTs);
+  console.log(accounts[0]);
+
+  console.log(a);
+}
+*/
+
+
+
+
 
 /*async function saving() {
   let SN = document.getElementById("wine-serial-nummer").value;

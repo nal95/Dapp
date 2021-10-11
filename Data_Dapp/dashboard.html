@@ -27,7 +27,7 @@
 <body>
 
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Hiqs GmbH</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
       data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -46,19 +46,6 @@
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
-                <span data-feather="home"></span>
-                Dashboard
-              </a>
-
-            <li class="nav-item">
-              <a id="get-balances-link" class="nav-link" href="#">
-                <span data-feather="shopping-cart"></span>
-                Balances
-              </a>
-            </li>
-            </li>
-            <li class="nav-item">
               <a id="get-transactions-link" class="nav-link" href="#">
                 <span data-feather="file"></span>
                 Transactions
@@ -72,15 +59,34 @@
             </li>
           </ul>
         </div>
+
+
       </nav>
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1></h1>
+        <h5>
+          <div>
+            <span data-feather="layers"></span>
+            <input id="lagerId-input" placeholder="lagerId" size="10" type="text" required="true">
+            <input id="lager-name" placeholder="lager-name" size="10" type="text" required="true">
+            <button id="save-lager" type="button" class="btn btn-primary float-end"
+              onclick="registLager();">save</button>
+          </div>
+        </h5>
+        <h15>.                                                                            </h15>
+        <h5>
+          <div>
+            <span data-feather="target"></span>
+            <input id="sensorId-input" placeholder="sensorId" size="10" type="text" required="true">
+            <input id="sensor-name" placeholder="sensor-name" size="10" type="text" required="true">
+            <button id="save-sensor" type="button" class="btn btn-primary float-end"
+              onclick="registSensor();">save</button>
+          </div>
+        </h5>
         <div
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2">Dashboard</h1>
-        </div>
-        <h2>Balances</h2>
-        <div id="userBalances" class="table-responsive">
         </div>
         <h2>Transactions</h2>
         <div id="tableOfTransactions" class="table-responsive">

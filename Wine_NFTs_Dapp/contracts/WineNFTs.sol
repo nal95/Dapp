@@ -41,7 +41,7 @@ contract WineNFTs is ERC721, Ownable {
         }
    }
   
-  function exist(string memory _Udi) internal view returns(bool ){
+  function alreadyExist(string memory _Udi) internal view returns(bool ){
       bool setter  = false;
       for(uint256 i = 0; i< nfts.length; i++){
           string memory _str = nfts[i].Udi;
@@ -55,7 +55,7 @@ contract WineNFTs is ERC721, Ownable {
 
   function mintWineToken(string memory _Udi, string memory _Uri) public onlyOwner returns (uint256) {
         
-        require(exist(_Udi) == false, "token alredy minted");
+        require(alreadyExist(_Udi) == false, "token alredy minted");
         bytes32 newSN = setUid(_Udi);
         id[newSN] = counter;
         _mint(msg.sender, id[newSN]);

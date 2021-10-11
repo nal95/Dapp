@@ -8,17 +8,21 @@ if (Moralis.User.current() == null && window.location.href != homepage) {
   document.querySelector("body").style.display = "none";
   window.location.href = "index.html";
 }
+const contract_lager = "0x249BdafAf4d458C0cA564666e274528e028166d6"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
+const optionsLager = { chain: "mumbai", address: contract_lager };
+
+const contract_sensor = "0x3a41A45E9769a1c08E7E2509823115d4F548C551"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
+const optionsSager = { chain: "mumbai", address: contract_sensor };
 
 login = async () => {
   var user = await Moralis.Web3.authenticate();
   if (user) {
-    console.log("logged in");
     user.set("name", document.getElementById("user-username").value);
     user.set("email", document.getElementById("user-email").value);
     await user.save();
     window.location.href = "dashboard.html";
   } else {
-    console.log("login fails!!!");
+    console.log("Login fails!!!, check user data please ");
   }
 };
 
@@ -29,7 +33,6 @@ logout = async () => {
 };
 
 getTransactions = async () => {
-  console.log("get transactions clicked");
   const options = {
     chain: "mumbai",
     address: "0x5d7b02ABF6F50266dC2f4816908D58e088DE4277",
@@ -75,33 +78,41 @@ getTransactions = async () => {
   }
 };
 
-getBalances = async () => {
-  console.log("Get balances is connected");
-  const mumbaiBalance = await Moralis.Web3API.account.getNativeBalance({
-    chain: "mumbai",
-  });
-  console.log((mumbaiBalance.balance / 1e18).toFixed(5) + "MATIC");
-
-  let content = (document.querySelector("#userBalances").innerHTML = `
-  <table class="table">
-  <thead>
-      <tr>
-          <th scope="col">Transaction</th>
-      </tr>
-  </thead>
-  <tbody >
-      <tr>
-          <th>Mumbai<th>
-          <td>${(mumbaiBalance.balance / 1e18).toFixed(5)} MATIC<td>
-      </tr>
-  </tbody>
-  </table>
-  
-  `);
-};
 storageWine = async () => {
   window.location.href = "storage.html";
 };
+async function registLager() {
+  let lagerId = document.getElementById("lagerId-input").value;
+  let name = document.getElementById("lager-name").value;
+  if (lagerId != "" && name != "") {
+    web3 = await Moralis.Web3.enable();
+    const accounts = await web3.eth.getAccounts();
+    const contractLager = new web3.eth.Contract(LagerAbi, contract_lager);
+    const a = await contractLager.methods
+      .setLager(lagerId, name)
+      .send({ from: accounts[0], value: 0 });
+    console.log(a);
+  } else {
+    alert("have the lager already be registered?");
+  }
+}
+
+async function registSensor() {
+  let sensorId = document.getElementById("sensorId-input").value;
+  let name = document.getElementById("sensor-name").value;
+  if (sensorId != "" && name != "") {
+    web3 = await Moralis.Web3.enable();
+    const accounts = await web3.eth.getAccounts();
+    const contractLager = new web3.eth.Contract(SensorAbi, contract_sensor);
+    const a = await contractLager.methods
+      .setSensor(sensorId, name)
+      .send({ from: accounts[0], value: 0 });
+    console.log(a);
+  } else {
+    alert("have the sensor already be registered?");
+  }
+}
+
 if (document.querySelector("#btn-login") != null) {
   document.querySelector("#btn-login").onclick = login;
 }
