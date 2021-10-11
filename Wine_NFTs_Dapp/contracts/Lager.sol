@@ -35,9 +35,9 @@ contract Lager {
     mapping(uint256 => bool) setterLager;
     mapping(string => bool) setterBottle;
 
-    event checkInevent(uint256 date, uint256 _lagerId, string _Udi);
-    event checkIOutevent(uint256 date, uint256 _lagerId, string _Udi);
-    event newLagerEvent(uint256 date, uint256 _lagerId, string _location);
+    event checkInEvent(uint256 date, uint256 lagerId, string Udi);
+    event checkOutEvent(uint256 date, uint256 lagerId, string Udi);
+    event newLagerEvent(uint256 date, uint256 lagerId, string location);
 
     function existStorage(uint256 _lagerId) internal view returns (uint256 r) {
         r = 0;
@@ -78,7 +78,7 @@ contract Lager {
         counter++;
         setterBottle[_Udi] = true;
         r = true;
-        emit checkInevent(date, _lagerId, _Udi);
+        emit checkInEvent(date, _lagerId, _Udi);
 
         return r;
     }
@@ -132,7 +132,7 @@ contract Lager {
                 }
                 bottles.pop();
                 setterBottle[_Udi] == false;
-                emit checkIOutevent(block.timestamp, _lagerId, _Udi);
+                emit checkOutEvent(block.timestamp, _lagerId, _Udi);
 
                 //fin delete in bottles[]
                 r = true;

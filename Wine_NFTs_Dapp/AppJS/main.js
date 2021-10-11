@@ -10,7 +10,7 @@ async function init() {
 
 init();
 
-const nft_contract_address = "0x4F6D60e662a3180f9fBa537eAC1d18a1BfA17D82"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
+const nft_contract_address = "0xD91d7FA166b709adF13e78Ed0Aa8Bd018177bFCe"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
 const options = { chain: "mumbai", address: nft_contract_address };
 
 login = async () => {

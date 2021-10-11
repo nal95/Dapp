@@ -27,17 +27,17 @@ const LagerAbi = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "_lagerId",
+        name: "lagerId",
         type: "uint256",
       },
       {
         indexed: false,
         internalType: "string",
-        name: "_Udi",
+        name: "Udi",
         type: "string",
       },
     ],
-    name: "checkIOutevent",
+    name: "checkInEvent",
     type: "event",
   },
   {
@@ -52,17 +52,17 @@ const LagerAbi = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "_lagerId",
+        name: "lagerId",
         type: "uint256",
       },
       {
         indexed: false,
         internalType: "string",
-        name: "_Udi",
+        name: "Udi",
         type: "string",
       },
     ],
-    name: "checkInevent",
+    name: "checkOutEvent",
     type: "event",
   },
   {
@@ -77,13 +77,13 @@ const LagerAbi = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "_lagerId",
+        name: "lagerId",
         type: "uint256",
       },
       {
         indexed: false,
         internalType: "string",
-        name: "_location",
+        name: "location",
         type: "string",
       },
     ],

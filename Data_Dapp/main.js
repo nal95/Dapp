@@ -11,7 +11,7 @@ if (Moralis.User.current() == null && window.location.href != homepage) {
 
 let web3;
 
-const contract_lager = "0x2B9af3935F73c0ddC5A38eb907b9dD52E9dDd6BE"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
+const contract_lager = "0x40Ac0EA97d0f542Ec664d52AdaB26F9D5436A35E"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
 const optionsLager = { chain: "mumbai", address: contract_lager };
 
 login = async () => {
@@ -109,26 +109,31 @@ toStorageBottle = async () => {
   window.location.href = "storage.html";
 };
 
-async function newLager() {
-  let lagerid = document.getElementById("lagerId-input").Value();
-  let location = document.getElementById("location-input").Value();
+async function newlager() {
   web3 = await Moralis.Web3.enable();
-  if (lagerid != "" && location != "") {
+  let lagerid = document.getElementById("lagerId-input").value;
+  let location = document.getElementById("location-input").value;
+  document.querySelector("#lagerId-input").disabled = true;
+  document.querySelector("#location-input").disabled = true;
+  if (lagerid != " " && location != " ") {
     const accounts = await web3.eth.getAccounts();
     const contractLager = new web3.eth.Contract(LagerAbi, contract_lager);
-    const a = await contractLager.methods
+    const a = contractLager.methods
       .newLager(lagerid, location)
       .send({ from: accounts[0], Value: 0 });
-    console.log(a);
+    console.log("ok: lagerid:", lagerid, "location:", location);
   } else {
     alert("please give the information");
   }
 }
 
-async function newSensor() {
-  let lagerID = document.getElementById("lager-input").Value();
-  let sensorId = document.getElementById("sensorId-input").Value();
-  let name = document.getElementById("name-input").Value();
+async function newsensor() {
+  let lagerID = document.getElementById("lager-input").value;
+  let sensorId = document.getElementById("sensorId-input").value;
+  let name = document.getElementById("name-input").value;
+  document.querySelector("#lager-input").disabled = true;
+  document.querySelector("#sensorId-input").disabled = true;
+  document.querySelector("#name-input").disabled = true;
   web3 = await Moralis.Web3.enable();
   if (lagerID != "" && sensorId != "" && name != "") {
     const accounts = await web3.eth.getAccounts();

@@ -5,7 +5,7 @@ const SensorAbi = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "_sendorId",
+        name: "sendorId",
         type: "uint256",
       },
       {

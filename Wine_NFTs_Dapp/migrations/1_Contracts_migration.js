@@ -4,7 +4,6 @@ const Sensor = artifacts.require("Sensor");
 module.exports = function (deployer) {
   deployer.deploy(WineNFTs);
   deployer.deploy(Sensor);
-
 };*/
 
 const Lager = artifacts.require("Lager");
@@ -12,7 +11,7 @@ const Lager = artifacts.require("Lager");
 module.exports = function (deployer) {
   deployer.deploy(
     Lager,
-    "0x4F6D60e662a3180f9fBa537eAC1d18a1BfA17D82",
-    "0x5a30dd8Ba0e31df79616ed3a736986568541F8A8"
+    "0xD91d7FA166b709adF13e78Ed0Aa8Bd018177bFCe",
+    "0x309c07826EE9Fd19e1533b0f279909d8dC850b3E"
   );
 };

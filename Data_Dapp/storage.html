@@ -18,15 +18,18 @@
 <body>
     <div class="container">
         <h2>Wine Serial Nummer to Store in Lager</h2>
-        <div class="input-group mb-3">
-            <input id="lagerId-input" type="text" class="form-control" placeholder="lager ID please" aria-label="URL"
-              aria-describedby="basic-addon1">
-            <input id="Udi-input" type="text" class="form-control" placeholder="Udi please" aria-label="URL"
-              aria-describedby="basic-addon1">
-          </div>
+        <form action="">
+            <div class="input-group mb-3">
+                <input id="lagerId-input" type="text" class="form-control" placeholder="lager ID please"
+                    aria-label="URL" aria-describedby="basic-addon1" required="required">
+                <input id="Udi-input" type="text" class="form-control" placeholder="Udi please" aria-label="URL"
+                    aria-describedby="basic-addon1" required="required">
+            </div>
+        </form>
         <div>
             <button id="btn-storage" type="submit" class="btn btn-primary" onclick="checkin();"> checkin </button>
-            <button id="btn-logout" type="submit" class="btn btn-danger float-end " onclick="checkout();"> checkout</button>
+            <button id="btn-logout" type="submit" class="btn btn-danger float-end " onclick="checkout();">
+                checkout</button>
         </div>
         <hr>
         <h2>Actuel bottles in lager</h2>
