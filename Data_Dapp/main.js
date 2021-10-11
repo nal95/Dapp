@@ -1,6 +1,6 @@
 // connect to Moralis server
-Moralis.initialize("su0K7UAKXwapd9KFbGAUFrVE6TpcwOuWnnEumP8y");
-Moralis.serverURL = "https://putptmsau7mw.moralishost.com:2053/server";
+Moralis.initialize("kPwcZIIvHOrZsQAxVLtx1iLbF0ciRi6fCeLVeBff");
+Moralis.serverURL = "https://qlbpnat4mi8a.moralishost.com:2053/server";
 
 let homepage = "http://127.0.0.1:5500/Data_Dapp/index.html";
 
@@ -134,7 +134,7 @@ async function newSensor() {
     const accounts = await web3.eth.getAccounts();
     const contractLager = new web3.eth.Contract(LagerAbi, contract_lager);
     const a = await contractLager.methods
-      .newSensor(lagerID,sensorId, name)
+      .newSensor(lagerID, sensorId, name)
       .send({ from: accounts[0], Value: 0 });
     console.log(a);
   } else {
