@@ -8,10 +8,10 @@ if (Moralis.User.current() == null && window.location.href != homepage) {
   document.querySelector("body").style.display = "none";
   window.location.href = "index.html";
 }
-const contract_lager = "0x249BdafAf4d458C0cA564666e274528e028166d6"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
+const contract_lager = "0x249BdafAf4d458C0cA564666e274528e028166d6"; //Lager Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
 const optionsLager = { chain: "mumbai", address: contract_lager };
 
-const contract_sensor = "0x3a41A45E9769a1c08E7E2509823115d4F548C551"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
+const contract_sensor = "0x3a41A45E9769a1c08E7E2509823115d4F548C551"; //Sensor Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
 const optionsSager = { chain: "mumbai", address: contract_sensor };
 
 login = async () => {

@@ -1,4 +1,4 @@
-const LagerAbi = [
+const LagerAbi =[
   {
     "inputs": [
       {
@@ -21,7 +21,7 @@ const LagerAbi = [
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "time",
+        "name": "date",
         "type": "uint256"
       },
       {
@@ -37,7 +37,7 @@ const LagerAbi = [
         "type": "string"
       }
     ],
-    "name": "checkInEvent",
+    "name": "checkIOutevent",
     "type": "event"
   },
   {
@@ -46,7 +46,7 @@ const LagerAbi = [
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "time",
+        "name": "date",
         "type": "uint256"
       },
       {
@@ -62,7 +62,32 @@ const LagerAbi = [
         "type": "string"
       }
     ],
-    "name": "checkOutEvent",
+    "name": "checkInevent",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "date",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_lagerId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_location",
+        "type": "string"
+      }
+    ],
+    "name": "newLagerEvent",
     "type": "event"
   },
   {
@@ -71,18 +96,18 @@ const LagerAbi = [
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
-    "name": "bottles",
+    "name": "Data",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "time",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "lagerId",
         "type": "uint256"
       },
       {
@@ -103,16 +128,16 @@ const LagerAbi = [
         "type": "uint256"
       }
     ],
-    "name": "lagerId",
+    "name": "bottles",
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "lagerId",
+        "name": "time",
         "type": "uint256"
       },
       {
         "internalType": "string",
-        "name": "name",
+        "name": "Udi",
         "type": "string"
       }
     ],
@@ -121,13 +146,24 @@ const LagerAbi = [
     "constant": true
   },
   {
-    "inputs": [],
-    "name": "sensor",
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "lager",
     "outputs": [
       {
-        "internalType": "contract Sensor",
-        "name": "",
-        "type": "address"
+        "internalType": "uint256",
+        "name": "lagerId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "location",
+        "type": "string"
       }
     ],
     "stateMutability": "view",
@@ -143,15 +179,15 @@ const LagerAbi = [
       },
       {
         "internalType": "string",
-        "name": "name",
+        "name": "_Udi",
         "type": "string"
       }
     ],
-    "name": "setLager",
+    "name": "checkIn",
     "outputs": [
       {
         "internalType": "bool",
-        "name": "",
+        "name": "r",
         "type": "bool"
       }
     ],
@@ -171,29 +207,12 @@ const LagerAbi = [
         "type": "string"
       }
     ],
-    "name": "checkInBottle",
+    "name": "checkOut",
     "outputs": [
       {
-        "components": [
-          {
-            "internalType": "uint256",
-            "name": "time",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "lagerId",
-            "type": "uint256"
-          },
-          {
-            "internalType": "string",
-            "name": "Udi",
-            "type": "string"
-          }
-        ],
-        "internalType": "struct Lager.Bottle[]",
+        "internalType": "bool",
         "name": "r",
-        "type": "tuple[]"
+        "type": "bool"
       }
     ],
     "stateMutability": "nonpayable",
@@ -208,20 +227,70 @@ const LagerAbi = [
       },
       {
         "internalType": "string",
-        "name": "_Udi",
+        "name": "location",
         "type": "string"
       }
     ],
-    "name": "checkOutBottle",
+    "name": "newLager",
     "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
       {
         "internalType": "bool",
         "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getBottles",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "time",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "Udi",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct Lager.Bottle[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_lagerId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_sensorId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      }
+    ],
+    "name": "newSensor",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "r",
         "type": "bool"
       }
     ],
@@ -242,7 +311,7 @@ const LagerAbi = [
       },
       {
         "internalType": "uint256",
-        "name": "_sendorId",
+        "name": "_sensorId",
         "type": "uint256"
       }
     ],

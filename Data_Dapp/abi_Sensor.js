@@ -1,131 +1,150 @@
 const SensorAbi = [
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: "string",
-        name: "date",
-        type: "string",
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_sendorId",
+        "type": "uint256"
       },
       {
-        indexed: false,
-        internalType: "bytes32",
-        name: "Hash",
-        type: "bytes32",
-      },
+        "indexed": false,
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      }
     ],
-    name: "storageEvent",
-    type: "event",
+    "name": "newSensorEvent",
+    "type": "event"
   },
   {
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
+        "indexed": false,
+        "internalType": "string",
+        "name": "date",
+        "type": "string"
       },
-    ],
-    name: "existance",
-    outputs: [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "Hash",
+        "type": "bytes32"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "name": "storageEvent",
+    "type": "event"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: "filehash",
-    outputs: [
+    "name": "existance",
+    "outputs": [
       {
-        internalType: "bytes32",
-        name: "",
-        type: "bytes32",
-      },
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "string",
-        name: "_date",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_hash",
-        type: "string",
-      },
-      {
-        internalType: "uint256",
-        name: "_sendorId",
-        type: "uint256",
-      },
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
     ],
-    name: "setStorageData",
-    outputs: [
+    "name": "filehash",
+    "outputs": [
       {
-        internalType: "bytes32",
-        name: "",
-        type: "bytes32",
-      },
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "string",
-        name: "_date",
-        type: "string",
+        "internalType": "string",
+        "name": "_date",
+        "type": "string"
       },
-    ],
-    name: "getStorageData",
-    outputs: [
       {
-        internalType: "bytes32",
-        name: "",
-        type: "bytes32",
+        "internalType": "string",
+        "name": "_hash",
+        "type": "string"
       },
+      {
+        "internalType": "uint256",
+        "name": "_sendorId",
+        "type": "uint256"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "name": "setStorageData",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "uint256",
-        name: "sensorId",
-        type: "uint256",
-      },
-      {
-        internalType: "string",
-        name: "name",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "_date",
+        "type": "string"
+      }
     ],
-    name: "setSensor",
-    outputs: [
+    "name": "getStorageData",
+    "outputs": [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    "stateMutability": "view",
+    "type": "function"
   },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_sensorId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      }
+    ],
+    "name": "setSensor",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
 ];
