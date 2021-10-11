@@ -8,21 +8,22 @@ if (Moralis.User.current() == null && window.location.href != homepage) {
   document.querySelector("body").style.display = "none";
   window.location.href = "index.html";
 }
-const contract_lager = "0x249BdafAf4d458C0cA564666e274528e028166d6"; //Lager Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
-const optionsLager = { chain: "mumbai", address: contract_lager };
 
-const contract_sensor = "0x3a41A45E9769a1c08E7E2509823115d4F548C551"; //Sensor Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
-const optionsSager = { chain: "mumbai", address: contract_sensor };
+let web3;
+
+const contract_lager = "0x2B9af3935F73c0ddC5A38eb907b9dD52E9dDd6BE"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
+const optionsLager = { chain: "mumbai", address: contract_lager };
 
 login = async () => {
   var user = await Moralis.Web3.authenticate();
   if (user) {
+    console.log("logged in");
     user.set("name", document.getElementById("user-username").value);
     user.set("email", document.getElementById("user-email").value);
     await user.save();
     window.location.href = "dashboard.html";
   } else {
-    console.log("Login fails!!!, check user data please ");
+    console.log("login fails!!!");
   }
 };
 
@@ -33,6 +34,7 @@ logout = async () => {
 };
 
 getTransactions = async () => {
+  console.log("get transactions clicked");
   const options = {
     chain: "mumbai",
     address: "0x5d7b02ABF6F50266dC2f4816908D58e088DE4277",
@@ -78,38 +80,65 @@ getTransactions = async () => {
   }
 };
 
-storageWine = async () => {
+getBalances = async () => {
+  console.log("Get balances is connected");
+  const mumbaiBalance = await Moralis.Web3API.account.getNativeBalance({
+    chain: "mumbai",
+  });
+  console.log((mumbaiBalance.balance / 1e18).toFixed(5) + "MATIC");
+
+  let content = (document.querySelector("#userBalances").innerHTML = `
+  <table class="table">
+  <thead>
+      <tr>
+          <th scope="col">Transaction</th>
+      </tr>
+  </thead>
+  <tbody >
+      <tr>
+          <th>Mumbai<th>
+          <td>${(mumbaiBalance.balance / 1e18).toFixed(5)} MATIC<td>
+      </tr>
+  </tbody>
+  </table>
+  
+  `);
+};
+
+toStorageBottle = async () => {
   window.location.href = "storage.html";
 };
-async function registLager() {
-  let lagerId = document.getElementById("lagerId-input").value;
-  let name = document.getElementById("lager-name").value;
-  if (lagerId != "" && name != "") {
-    web3 = await Moralis.Web3.enable();
+
+async function newLager() {
+  let lagerid = document.getElementById("lagerId-input").Value();
+  let location = document.getElementById("location-input").Value();
+  web3 = await Moralis.Web3.enable();
+  if (lagerid != "" && location != "") {
     const accounts = await web3.eth.getAccounts();
     const contractLager = new web3.eth.Contract(LagerAbi, contract_lager);
     const a = await contractLager.methods
-      .setLager(lagerId, name)
-      .send({ from: accounts[0], value: 0 });
+      .newLager(lagerid, location)
+      .send({ from: accounts[0], Value: 0 });
     console.log(a);
   } else {
-    alert("have the lager already be registered?");
+    alert("please give the information");
   }
 }
 
-async function registSensor() {
-  let sensorId = document.getElementById("sensorId-input").value;
-  let name = document.getElementById("sensor-name").value;
-  if (sensorId != "" && name != "") {
-    web3 = await Moralis.Web3.enable();
+async function newSensor() {
+  let lagerID = document.getElementById("lager-input").Value();
+  let sensorId = document.getElementById("sensorId-input").Value();
+  let name = document.getElementById("name-input").Value();
+  web3 = await Moralis.Web3.enable();
+  if (lagerID != "" && sensorId != "" && name != "") {
     const accounts = await web3.eth.getAccounts();
-    const contractLager = new web3.eth.Contract(SensorAbi, contract_sensor);
+    const contractLager = new web3.eth.Contract(LagerAbi, contract_lager);
     const a = await contractLager.methods
-      .setSensor(sensorId, name)
-      .send({ from: accounts[0], value: 0 });
+      .newSensor(lagerID,sensorId, name)
+      .send({ from: accounts[0], Value: 0 });
     console.log(a);
   } else {
-    alert("have the sensor already be registered?");
+    alert("please give the information");
   }
 }
 
@@ -124,7 +153,7 @@ if (document.querySelector("#get-transactions-link")) {
   document.querySelector("#get-transactions-link").onclick = getTransactions;
 }
 if (document.querySelector("#get-nfts-link")) {
-  document.querySelector("#get-nfts-link").onclick = storageWine;
+  document.querySelector("#get-nfts-link").onclick = toStorageBottle;
 }
 
 if (document.querySelector("#get-balances-link")) {
