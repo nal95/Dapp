@@ -26,62 +26,60 @@ Starting migrations...
    ------------------------------
    > confirmation number: 2 (block: 20046018)
 
+  1_Contracts_migration.js
+========================
+
    Replacing 'Sensor'
    ------------------
-   > transaction hash:    0x56fbcc52f2388945a3dd7f6a3d4ef40e870da07ed79fd63099934d81c4e88ce3
-   > Blocks: 0            Seconds: 0
-   > contract address:    0x309c07826EE9Fd19e1533b0f279909d8dC850b3E
-   > block number:        20046021
-   > block timestamp:     1633959951
-   > account:             0x5d7b02ABF6F50266dC2f4816908D58e088DE4277
-   > balance:             2.162995817584
+   > transaction hash:    0x49fffd1db4127353326f0c322566f98edf154c3c41607358e018cef037f187c8
+   > Blocks: 2            Seconds: 4
+   > contract address:    0x9d97683AD82c9d9d11825123D2621Eb2ddCaAff8      
+   > block number:        20049305
+   > block timestamp:     1633966851
+   > account:             0x5d7b02ABF6F50266dC2f4816908D58e088DE4277      
+   > balance:             2.141656570784
    > gas used:            665511 (0xa27a7)
-   > gas price:           5 gwei
+   > gas price:           3 gwei
    > value sent:          0 ETH
-   > total cost:          0.003327555 ETH
+   > total cost:          0.001996533 ETH
 
    Pausing for 2 confirmations...
    ------------------------------
-   > confirmation number: 2 (block: 20046023)
+   > confirmation number: 2 (block: 20049308)
    > Saving artifacts
    -------------------------------------
-   > Total cost:         0.032845825 ETH
-
-
-Summary
-=======
-> Total deployments:   2
-> Final cost:          0.032845825 ETH
+   > Total cost:         0.001996533 ETH
 1_Contracts_migration.js
 ========================
 
    Replacing 'Lager'
    -----------------
-   > transaction hash:    0xc0bf9718381c13a4c95aba3fafc6ae926e5fe36dc5d8f251aa2430296864aff0
-   > Blocks: 2            Seconds: 4
-   > contract address:    0x40Ac0EA97d0f542Ec664d52AdaB26F9D5436A35E
-   > block number:        20046063
-   > block timestamp:     1633960035
-   > account:             0x5d7b02ABF6F50266dC2f4816908D58e088DE4277
-   > balance:             2.156468816584
-   > gas used:            2175667 (0x2132b3)
+   > transaction hash:    0xdfe5689e7f3dd7fe44d23ece340fde54bb8d4c0b6c5e8f4d7301b9c1a0347878
+   > Blocks: 4            Seconds: 4
+   > contract address:    0x9157d23dbb2CFcf86bD4cc39eDa7D0Cb42a93E7F      
+   > block number:        20049384
+   > block timestamp:     1633967013
+   > account:             0x5d7b02ABF6F50266dC2f4816908D58e088DE4277      
+   > balance:             2.135124169784
+   > gas used:            2177467 (0x2139bb)
    > gas price:           3 gwei
    > value sent:          0 ETH
-   > total cost:          0.006527001 ETH
+   > total cost:          0.006532401 ETH
 
    Pausing for 2 confirmations...
    ------------------------------
-   > confirmation number: 2 (block: 20046064)
+   > confirmation number: 3 (block: 20049387)
    > Saving artifacts
    -------------------------------------
-   > Total cost:         0.006527001 ETH
+   > Total cost:         0.006532401 ETH
 
 
 Summary
 =======
 > Total deployments:   1
-> Final cost:          0.006527001 ETH
+> Final cost:          0.006532401 ETH
+
 
 WinesNFTS_Contract:"0xD91d7FA166b709adF13e78Ed0Aa8Bd018177bFCe"
-Sensor_Contrct:"0x309c07826EE9Fd19e1533b0f279909d8dC850b3E" 
-Lager_Contract:"0x40Ac0EA97d0f542Ec664d52AdaB26F9D5436A35E"
+Sensor_Contrct:"0x9d97683AD82c9d9d11825123D2621Eb2ddCaAff8" 
+Lager_Contract:"0x9157d23dbb2CFcf86bD4cc39eDa7D0Cb42a93E7F"

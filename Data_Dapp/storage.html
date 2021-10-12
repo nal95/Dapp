@@ -4,13 +4,54 @@
 <head>
     <title>The Storage Component</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="dashboard.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+
 
 </head>
 
@@ -32,14 +73,18 @@
                 checkout</button>
         </div>
         <hr>
-        <h2>Actuel bottles in lager</h2>
-
         <div id="tableOfNFTs">
 
         </div>
 
         <div id="content">
 
+        </div>
+
+        <div id="tableOfCheckIn" class="column">
+
+        </div>
+        <div id="tableOfCheckOut" class="column">
         </div>
         <hr>
     </div>

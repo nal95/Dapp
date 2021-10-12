@@ -1,6 +1,6 @@
 // connect to Moralis server
-Moralis.initialize("kPwcZIIvHOrZsQAxVLtx1iLbF0ciRi6fCeLVeBff");
-Moralis.serverURL = "https://qlbpnat4mi8a.moralishost.com:2053/server";
+Moralis.initialize("YTjl1E3BA9GWdOOhrUpNUbWtWqh91kkBMCR8AHv1");
+Moralis.serverURL = "https://jkhjbmnk50jf.grandmoralis.com:2053/server";
 
 let homepage = "http://127.0.0.1:5500/Data_Dapp/index.html";
 
@@ -11,7 +11,7 @@ if (Moralis.User.current() == null && window.location.href != homepage) {
 
 let web3;
 
-const contract_lager = "0x40Ac0EA97d0f542Ec664d52AdaB26F9D5436A35E"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
+const contract_lager = "0x9157d23dbb2CFcf86bD4cc39eDa7D0Cb42a93E7F"; //NFT Minting Contract Use This One "Batteries Included", code of this contract is in the github repository under contract_base for your reference.
 const optionsLager = { chain: "mumbai", address: contract_lager };
 
 login = async () => {
@@ -109,6 +109,49 @@ toStorageBottle = async () => {
   window.location.href = "storage.html";
 };
 
+async function fileUplaod(event) {
+  var file = event.target.files[0];
+
+  const fileReader = new FileReader();
+
+  fileReader.addEventListener("loadend", (evt) => {
+    if (evt.target.readyState == FileReader.DONE) {
+      const hash = CryptoJS.SHA256(fileReader.result);
+      console.log(hash.toString());
+    }
+  });
+  fileReader.readAsText(file);
+}
+/*async function upload() {
+  let file = document.querySelector("#file");
+
+  // If there's no file, do nothing
+  if (!file.value.length) return;
+
+  // Create a new FileReader() object
+  let reader = new FileReader();
+
+  // Setup the callback event to run when the file is read
+  reader.onload = logFile;
+  console.log(reader.result);
+
+  // Read the file
+  //const data = await reader.readAsText(file.files[0]);
+
+  document.getElementById("upload").setAttribute("disabled", null);
+  document.getElementById("file").setAttribute("disabled", null);
+  //const hash = CryptoJS.SHA256(data);
+  //const fileHash = hash.update(data).digest("hex");
+  //console.log(hash.toString());
+}
+
+function logFile(event) {
+  let str = event.target.result;
+  let json = JSON.parse(str);
+  //console.log("string", str);
+  //console.log("json", json);
+  return json;
+}*/
 async function newlager() {
   web3 = await Moralis.Web3.enable();
   let lagerid = document.getElementById("lagerId-input").value;
@@ -122,6 +165,7 @@ async function newlager() {
       .newLager(lagerid, location)
       .send({ from: accounts[0], Value: 0 });
     console.log("ok: lagerid:", lagerid, "location:", location);
+    console.log(a);
   } else {
     alert("please give the information");
   }
@@ -163,6 +207,10 @@ if (document.querySelector("#get-nfts-link")) {
 
 if (document.querySelector("#get-balances-link")) {
   document.querySelector("#get-balances-link").onclick = getBalances;
+}
+
+if (document.querySelector("#upload")) {
+  document.querySelector("#upload").onclick = upload;
 }
 
 //get-transactions-link

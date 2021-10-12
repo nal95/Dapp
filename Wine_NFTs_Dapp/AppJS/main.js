@@ -1,6 +1,6 @@
 // connect to Moralis server
-Moralis.initialize("kPwcZIIvHOrZsQAxVLtx1iLbF0ciRi6fCeLVeBff");
-Moralis.serverURL = "https://qlbpnat4mi8a.moralishost.com:2053/server";
+Moralis.initialize("YTjl1E3BA9GWdOOhrUpNUbWtWqh91kkBMCR8AHv1");
+Moralis.serverURL = "https://jkhjbmnk50jf.grandmoralis.com:2053/server";
 
 let web3;
 

@@ -131,7 +131,7 @@ contract Lager {
                     bottles[j] = bottles[j + 1];
                 }
                 bottles.pop();
-                setterBottle[_Udi] == false;
+                setterBottle[_Udi] = false;
                 emit checkOutEvent(block.timestamp, _lagerId, _Udi);
 
                 //fin delete in bottles[]

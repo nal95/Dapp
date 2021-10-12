@@ -14,7 +14,7 @@
   <link href="dashboard.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
   <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
 
@@ -27,7 +27,7 @@
 <body>
 
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="https://www.hiqs.de">hiqs GmbH / Lager </a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
       data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -68,6 +68,16 @@
               <a id="get-nfts-link" class="nav-link" href="#">
                 <span data-feather="users"></span>
                 NFTs
+              </a>
+            </li>
+            <li class="nav-item">
+              <a id="get-dara-link" class="nav-link">
+                <span data-feather="hard-drive"></span>
+                <label for="file">File to hash</label>
+                <input type="file" id="file" accept=".json" onclick="fileUplaod(event)" />
+                <!-- <button class="btn btn-primary" id="upload" type="submit" style="height: 29px; width: 130px">Save
+                  file-hash </button> -->
+
               </a>
             </li>
           </ul>
